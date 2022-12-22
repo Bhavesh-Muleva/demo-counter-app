@@ -54,26 +54,9 @@ pipeline{
                         
                         sh 'mvn clean package sonar:sonar'
                     }
-                   }
-                    
-                }
+                }       
             }
-            stage('Quality Gate Status'){
-                
-                steps{
-                    
-                    script{
-                        
-                      waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-Token'
-//                          timeout(time: 5, unit: ‘MINUTES’) {
-//                              def qg= waitForQualityGate()
-//                              if (qg.status!= ‘OK’){
-//                                 error “Pipeline aborted due to quality gate failure: ${qg.status}”
-//                              }
-//                          }         
-//                      echo ‘Quality Gate Passed’
-                    }
-                }
-            }
-        }
+         }
+        
+     }
 }
